@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faiz Sultan, AI Prompt Engineer and Visual Director</title>
+<meta name="description" content="Faiz Sultan crafts AI-powered product ads, 3D visuals, semi-realistic animation, UGC content, motion graphics and brand edits. Three years engineering prompts for cinematic AI content." />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,800&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#141416;
+  --card:#232627;
+  --white:#FCFCFD;
+  --grey:#777E90;
+  --coral:#FF6A55;
+  --coral-dim:rgba(255,106,85,.12);
+  --line:rgba(255,255,255,.08);
+  --display:'Clash Display','Cabinet Grotesk',sans-serif;
+  --body:'General Sans','Cabinet Grotesk',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);overflow-x:hidden;line-height:1.5;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+::selection{background:var(--coral);color:var(--bg)}
+
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+
+#loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;transition:opacity .8s ease,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+.load-bar{width:180px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.load-bar span{position:absolute;inset:0;background:var(--coral);transform-origin:left;transform:scaleX(0);animation:load 1.8s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes load{to{transform:scaleX(1)}}
+.load-name{font-family:var(--display);font-weight:500;font-size:20px;letter-spacing:-.02em}
+
+#robot-canvas{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:1;pointer-events:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;height:68px;padding:0 6vw;background:linear-gradient(to bottom,rgba(20,20,22,.85),rgba(20,20,22,0));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+.logo{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.02em;color:var(--white)}
+.nav-links{display:flex;gap:28px;font-family:var(--body);font-weight:500;font-size:14px;flex-wrap:wrap}
+.nav-links a{color:var(--white);text-decoration:none;position:relative;transition:opacity .3s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:var(--coral);transition:width .35s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after{width:100%}
+.menu-btn{display:none;font-family:var(--body);font-weight:500;font-size:14px;background:none;border:none;color:var(--white);cursor:pointer}
+
+main{position:relative;z-index:2}
+
+/* HERO */
+.hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;position:relative}
+.hero h1{font-family:var(--display);font-size:clamp(2.9rem,8.5vw,7rem);font-weight:500;line-height:.94;letter-spacing:-.04em;max-width:15ch}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(110%);animation:reveal 1.1s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .ln:nth-child(1) i{animation-delay:.45s}
+.hero h1 .ln:nth-child(2) i{animation-delay:.58s}
+.hero h1 .ln:nth-child(3) i{animation-delay:.71s}
+.hero h1 em{font-style:italic;color:var(--coral);font-weight:500;line-height:1.1;padding-bottom:.05em}
+.hero-sub{margin-top:32px;max-width:46ch;color:var(--grey);font-size:clamp(1.05rem,1.4vw,1.2rem);font-weight:400;opacity:0;animation:fadeUp 1s ease 1s forwards}
+.hero-sub b{color:var(--white);font-weight:500}
+.hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease 1.2s forwards}
+@keyframes reveal{to{transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+.btn{font-family:var(--body);font-weight:500;font-size:15px;text-decoration:none;border-radius:999px;padding:14px 26px;transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,color .3s,border-color .3s;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;border:1px solid var(--line);color:var(--white);cursor:pointer}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--coral);color:var(--bg);border-color:var(--coral)}
+.btn.primary:hover{background:transparent;color:var(--coral)}
+.btn.ghost:hover{border-color:var(--coral);color:var(--coral)}
+.btn .ico{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(20,20,22,.18)}
+.btn.ghost .ico{background:var(--coral-dim)}
+
+.section{padding:14vh 6vw;position:relative}
+.sec-head{margin-bottom:8px;max-width:60ch}
+.sec-title{font-family:var(--display);font-size:clamp(2.1rem,5.5vw,4.2rem);font-weight:500;letter-spacing:-.035em;line-height:1}
+.sec-title em{font-style:italic;color:var(--coral);font-weight:500;padding-bottom:.05em}
+.sec-desc{margin-top:18px;color:var(--grey);font-size:1.06rem;max-width:52ch;font-weight:400}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:end}
+.about-lead{font-family:var(--display);font-size:clamp(1.5rem,2.7vw,2.3rem);font-weight:400;line-height:1.28;letter-spacing:-.02em}
+.about-lead em{font-style:italic;color:var(--coral);font-weight:400;padding-bottom:.04em}
+.skill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+.chip{font-family:var(--body);font-weight:500;font-size:14px;color:var(--grey);border:1px solid var(--line);border-radius:999px;padding:9px 18px;transition:border-color .3s,color .3s,background .3s}
+.chip:hover{border-color:var(--coral);color:var(--white);background:var(--coral-dim)}
+.stats{display:flex;flex-direction:column;gap:26px}
+.stat{border-top:1px solid var(--line);padding-top:16px}
+.stat .n{font-family:var(--display);font-size:clamp(2.6rem,4.2vw,3.6rem);font-weight:600;letter-spacing:-.04em;line-height:1}
+.stat .n em{font-style:normal;color:var(--coral)}
+.stat .l{color:var(--grey);font-size:.95rem;margin-top:6px}
+
+/* MARQUEE (single) */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;margin:6vh 0}
+.marquee-track{display:flex;gap:56px;white-space:nowrap;width:max-content;animation:scroll-x 30s linear infinite}
+.marquee-track span{font-family:var(--display);font-size:clamp(1.9rem,4vw,3rem);font-weight:500;letter-spacing:-.03em;color:var(--card);display:flex;align-items:center;gap:56px}
+.marquee-track span::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--coral)}
+@keyframes scroll-x{to{transform:translateX(-50%)}}
+
+/* ===== CYLINDRICAL 3D CAROUSEL ===== */
+.carousel-section{min-height:100dvh;display:flex;align-items:center;position:relative;overflow:hidden}
+.carousel-inner{width:100%;padding:0 6vw}
+.carousel-inner .sec-head{margin:0 auto 2vh;text-align:center;max-width:60ch}
+.carousel-inner .sec-desc{margin-left:auto;margin-right:auto}
+.sub-label{font-family:var(--body);font-weight:500;font-size:15px;color:var(--coral);margin-bottom:14px}
+.carousel-stage{position:relative;width:100%;height:60vh;perspective:1500px;perspective-origin:50% 50%}
+.cyl{position:absolute;inset:0;transform-style:preserve-3d}
+.cyl-item{position:absolute;top:50%;left:50%;width:clamp(220px,38vw,400px);aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card);will-change:transform,filter,opacity;backface-visibility:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.cyl-item.h{width:clamp(300px,54vw,620px);aspect-ratio:16/9}
+.cyl-item.v{width:clamp(170px,26vw,300px);aspect-ratio:9/16}
+.ci-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ci-media.play{display:flex;align-items:center;justify-content:center}
+.ci-media.play .pico{width:58px;height:58px;border-radius:50%;border:1px solid rgba(252,252,253,.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.ci-media.play .pico svg{width:18px;height:18px;fill:var(--white)}
+.ci-cap{position:absolute;left:0;right:0;bottom:0;padding:20px;z-index:3;background:linear-gradient(transparent,rgba(20,20,22,.92))}
+.ci-cap h3{font-family:var(--display);font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
+.ci-cap p{color:var(--grey);font-size:.86rem;margin-top:3px}
+.cyl-item.is-front{border-color:rgba(255,106,85,.45)}
+/* Local video preview + click-to-play */
+.ci-media .video-poster,.ci-media .video-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cyl-item[data-video]{cursor:default}
+.cyl-item[data-video].is-front{cursor:pointer}
+.cyl-item[data-video].is-front .ci-media.play .pico{transform:scale(1.06);border-color:var(--coral);background:var(--coral-dim)}
+.ci-media.play .pico{transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,background .35s}
+.cyl-item .ci-video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:4;background:#000;object-fit:cover}
+.cyl-item.is-playing .ci-cap{opacity:0;transition:opacity .3s}
+/* progress: functional rotation feedback, not a scroll cue */
+.carousel-progress{width:min(360px,60vw);height:2px;background:var(--line);border-radius:2px;margin:3.5vh auto 0;overflow:hidden}
+.carousel-progress span{display:block;height:100%;width:100%;background:var(--coral);transform-origin:left;transform:scaleX(0)}
+
+/* VIDEOS header */
+.videos-head{padding:14vh 6vw 0;text-align:center}
+.videos-head .sec-head{margin:0 auto}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.proc{background:var(--bg);padding:34px 26px;transition:background .4s}
+.proc:hover{background:var(--card)}
+.proc .n{font-family:var(--mono);font-size:13px;color:var(--coral)}
+.proc h4{font-family:var(--display);font-size:1.35rem;font-weight:500;margin:16px 0 10px;letter-spacing:-.02em}
+.proc p{color:var(--grey);font-size:.95rem}
+
+/* CONTACT */
+.contact{text-align:center;padding:18vh 6vw}
+.contact h2{font-family:var(--display);font-size:clamp(2.8rem,8.5vw,6.8rem);font-weight:500;letter-spacing:-.04em;line-height:.92;margin-bottom:36px}
+.contact h2 em{font-style:italic;color:var(--coral);font-weight:500;padding-bottom:.05em}
+.contact-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.social-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* ===== FLOWING GLOW SOCIAL BUTTONS =====
+   A conic-gradient ring rotates around the edge (the flowing glow).
+   On hover, the flow STOPS and the whole edge lights up. */
+.glow-btn{position:relative;display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 26px;font-family:var(--body);font-weight:500;font-size:15px;color:var(--white);text-decoration:none;background:var(--bg);isolation:isolate;cursor:pointer;transition:color .35s,transform .3s cubic-bezier(.16,1,.3,1)}
+.glow-btn:active{transform:scale(.97)}
+/* the moving border lives in ::before (the flowing conic light) */
+.glow-btn::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--ang),transparent 0deg,transparent 250deg,#FF6A55 300deg,#ffb4a6 330deg,#FF6A55 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:spin-ang 3.2s linear infinite;z-index:-1}
+/* the glow halo in ::after, hidden until hover */
+.glow-btn::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1.5px solid var(--coral);opacity:0;box-shadow:0 0 14px rgba(255,106,85,.7),0 0 28px rgba(255,106,85,.45),inset 0 0 10px rgba(255,106,85,.35);transition:opacity .35s;z-index:-1;pointer-events:none}
+.glow-btn:hover{color:var(--coral)}
+/* hover: stop the flow, light up the whole edge */
+.glow-btn:hover::before{animation-play-state:paused;opacity:0}
+.glow-btn:hover::after{opacity:1}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin-ang{to{--ang:360deg}}
+/* fallback for browsers without @property: rotate the pseudo-element instead */
+@supports not (background:conic-gradient(from var(--ang),red,blue)){
+  .glow-btn::before{background:conic-gradient(transparent 0deg,transparent 250deg,#FF6A55 300deg,#ffb4a6 330deg,#FF6A55 360deg);animation:spin-rot 3.2s linear infinite}
+  @keyframes spin-rot{to{transform:rotate(360deg)}}
+}
+@media(prefers-reduced-motion:reduce){
+  .glow-btn::before{animation:none;opacity:.6}
+}
+
+footer{padding:38px 6vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--grey);font-size:14px}
+footer a{color:var(--grey);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--coral)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+/* mobile */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .about-grid{grid-template-columns:1fr;gap:44px}
+  .process{grid-template-columns:1fr 1fr}
+  #robot-canvas{opacity:.45}
+  .carousel-stage{height:56vh}
+}
+@media(max-width:560px){.process{grid-template-columns:1fr}}
+
+/* reduced motion / no-GSAP fallback: carousels become responsive grids */
+body.no-motion .carousel-section{min-height:auto;display:block;padding:12vh 6vw}
+body.no-motion .carousel-stage{height:auto;perspective:none}
+body.no-motion .cyl{position:static;transform:none!important;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+body.no-motion .cyl-item{position:static;top:auto;left:auto;width:auto!important;transform:none!important;filter:none!important;opacity:1!important;box-shadow:none}
+body.no-motion .cyl-item.v{aspect-ratio:9/16}
+body.no-motion .cyl-item.h{aspect-ratio:16/9}
+body.no-motion .carousel-progress{display:none}
+@media(prefers-reduced-motion:reduce){
+  .hero h1 .ln i,.hero-sub,.hero-cta{animation:none;opacity:1;transform:none}
+  .marquee-track{animation:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div id="loader"><div class="load-name">Faiz Sultan</div><div class="load-bar"><span></span></div></div>
+
+<canvas id="robot-canvas"></canvas>
+
+<nav>
+  <div class="logo">Faiz Sultan</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#static">Static</a>
+    <a href="#ugc">UGC</a>
+    <a href="#ads3d">3D Ads</a>
+    <a href="#animation">Animation</a>
+    <a href="#motion">Motion</a>
+    <a href="#vfx">VFX</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex'">Menu</button>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>
+      <span class="ln"><i>I direct</i></span>
+      <span class="ln"><i>machines to</i></span>
+      <span class="ln"><i><em>see</em> beauty.</i></span>
+    </h1>
+    <p class="hero-sub">Three years engineering prompts that turn raw AI into <b>cinematic product ads, 3D visuals, semi-realistic animation and brand edits</b>. I art-direct intelligence.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn primary">Start a project <span class="ico">→</span></a>
+      <a href="#static" class="btn ghost">See the work <span class="ico">↓</span></a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div>
+        <p class="about-lead reveal">I'm Faiz Sultan, a prompt engineer who treats every generation like a film set. Lighting, lens, composition, story. The model is my camera. The prompt is my <em>direction</em>.</p>
+        <div class="skill-row reveal d1">
+          <span class="chip">AI Product Photography</span>
+          <span class="chip">3D Product Ads</span>
+          <span class="chip">Semi-Realistic Animation</span>
+          <span class="chip">UGC Avatars</span>
+          <span class="chip">AI VFX</span>
+          <span class="chip">Motion Graphics</span>
+          <span class="chip">Brand Edits</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal d1"><div class="n">3<em>+</em></div><div class="l">Years in AI content</div></div>
+        <div class="stat reveal d2"><div class="n">200<em>+</em></div><div class="l">Ads and shoots delivered</div></div>
+        <div class="stat reveal d3"><div class="n">12<em>×</em></div><div class="l">Avg. faster than a studio shoot</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- single marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Product Ads</span><span>UGC Content</span><span>3D Renders</span><span>AI Animation</span><span>AI VFX</span><span>Brand Edits</span>
+      <span>Product Ads</span><span>UGC Content</span><span>3D Renders</span><span>AI Animation</span><span>AI VFX</span><span>Brand Edits</span>
+    </div>
+  </div>
+
+  <!-- CAROUSEL: AI Product Photography -->
+  <section class="carousel-section" id="static" data-carousel data-spread="0.32">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>Static</em> and Product Shoots</h2>
+        <p class="sec-desc">Studio-grade product photography, art-directed end to end. Scroll to spin the showcase.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-grad="g1"><img class="ci-media" src="images/statics/fragrance-glass.jpeg" alt="Fragrance, glass" loading="lazy"><div class="ci-cap"><h3>Fragrance, glass</h3><p>Macro reflections, soft key light</p></div></div>
+        <div class="cyl-item h" data-grad="g2"><img class="ci-media" src="images/statics/skincare-studio.jpeg" alt="Skincare, studio" loading="lazy"><div class="ci-cap"><h3>Skincare, studio</h3><p>Gradient sweep, dewy highlights</p></div></div>
+        <div class="cyl-item h" data-grad="g3"><img class="ci-media" src="images/statics/gadget-hero-shot.jpeg" alt="Gadget, hero shot" loading="lazy"><div class="ci-cap"><h3>Gadget, hero shot</h3><p>Rim light, matte black set</p></div></div>
+        <div class="cyl-item h" data-grad="g4"><img class="ci-media" src="images/statics/beverage-splash.jpeg" alt="Beverage splash" loading="lazy"><div class="ci-cap"><h3>Beverage splash</h3><p>Frozen motion, condensation</p></div></div>
+        <div class="cyl-item h" data-grad="g5"><img class="ci-media" src="images/statics/watch-macro.jpeg" alt="Watch, macro" loading="lazy"><div class="ci-cap"><h3>Watch, macro</h3><p>Brushed metal, spec highlights</p></div></div>
+        <div class="cyl-item h" data-grad="g6"><img class="ci-media" src="images/statics/footwear-set.jpeg" alt="Footwear, set" loading="lazy"><div class="ci-cap"><h3>Footwear, set</h3><p>Editorial colour blocking</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI UGC -->
+  <section class="carousel-section" id="ugc" data-carousel data-spread="0.26">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>UGC</em> and Avatars</h2>
+        <p class="sec-desc">Authentic, scroll-stopping creator content. AI avatars that talk, react and sell.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <!-- Local video card template:
+        <div class="cyl-item v" data-video="videos/my-video.mp4" data-poster="posters/my-video.jpg">
+          <div class="ci-media play">
+            <img class="video-poster" src="posters/my-video.jpg" alt="Project title" loading="lazy">
+            <div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="ci-cap"><h3>Project title</h3><p>Project category</p></div>
+        </div>
+        -->
+        <div class="cyl-item v" data-video="videos/ugc/ai-vidfeo.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/ai-vidfeo.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>AI Vidfeo</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="videos/ugc/daraz-ad.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/daraz-ad.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Daraz Ad</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="videos/ugc/pay-day-sale.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/pay-day-sale.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Pay Day Sale</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="videos/ugc/steez-skin-video.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/steez-skin-video.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Steez Skin Video</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="videos/ugc/sunbae-growth.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/sunbae-growth.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>SUNBAE Growth</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="videos/ugc/ugc.mp4"><div class="ci-media play"><video class="video-preview" src="videos/ugc/ugc.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>UGC</h3><p>AI creator short</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI 3D Ads -->
+  <section class="carousel-section" id="ads3d" data-carousel data-spread="0.26">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>3D</em> Product Ads</h2>
+        <p class="sec-desc">Full motion campaigns. Products that float, morph and reveal in 3D space.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item v" data-video="videos/3d-ads/slim-fast-hunger-control.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/slim-fast-hunger-control.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slim Fast Hunger Control</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="videos/3d-ads/hunger-control-cycle.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/hunger-control-cycle.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Hunger Control Cycle</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="videos/3d-ads/pdrn-peptide-serum.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/pdrn-peptide-serum.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>PDRN Peptide Serum</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="videos/3d-ads/slimming-shots.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/slimming-shots.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slimming Shots</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="videos/3d-ads/pdrn-salmon-dna.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/pdrn-salmon-dna.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>PDRN Salmon DNA</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="videos/3d-ads/slim-fast-bundle.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-ads/slim-fast-bundle.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slim Fast Bundle</h3><p>3D product ad</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: 3D Semi-Realistic AI Animation (NEW) -->
+  <section class="carousel-section" id="animation" data-carousel data-spread="0.36">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">3D Semi-Realistic <em>Animation</em></h2>
+        <p class="sec-desc">Characters and worlds built with AI. Stylised yet believable motion, lit like film.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="videos/3d-animation/class-scene.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/class-scene.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Class Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="videos/3d-animation/fight-scene.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/fight-scene.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Fight Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="videos/3d-animation/football.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/football.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Football</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="videos/3d-animation/politician-scene.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/politician-scene.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Politician Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="videos/3d-animation/vlogger-2.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/vlogger-2.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Vlogger 2</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="videos/3d-animation/vlogger.mp4"><div class="ci-media play"><video class="video-preview" src="videos/3d-animation/vlogger.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Vlogger</h3><p>3D semi-realistic animation</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI Motion Graphics -->
+  <section class="carousel-section" id="motion" data-carousel data-spread="0.32">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>Motion Graphics</em></h2>
+        <p class="sec-desc">Kinetic identity, animated logos and type. Designed and rendered with AI for brand and social.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="videos/motion-graphics/motion-graphic-reel-1.mp4"><div class="ci-media play"><video class="video-preview" src="videos/motion-graphics/motion-graphic-reel-1.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Motion Graphic Reel 1</h3><p>16:9 motion graphic</p></div></div>
+        <div class="cyl-item v" data-video="videos/motion-graphics/motion-graphic-reel-2.mp4"><div class="ci-media play"><video class="video-preview" src="videos/motion-graphics/motion-graphic-reel-2.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Motion Graphic Reel 2</h3><p>9:16 motion graphic</p></div></div>
+        <div class="cyl-item h" data-video="videos/motion-graphics/studio-labs-final-saas.mp4"><div class="ci-media play"><video class="video-preview" src="videos/motion-graphics/studio-labs-final-saas.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Studio Labs Final SaaS</h3><p>16:9 SaaS video</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- AI VFX: one section header + two carousels (horizontal + vertical) -->
+  <div class="videos-head" id="vfx">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">AI <em>VFX</em></h2>
+      <p class="sec-desc">Cinematic visual effects, composited and graded. Scroll to spin the showcase.</p>
+    </div>
+  </div>
+
+  <!-- VFX carousel -->
+  <section class="carousel-section" data-carousel data-spread="0.36">
+    <div class="carousel-inner">
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="videos/vfx/iron-man.mp4"><div class="ci-media play"><video class="video-preview" src="videos/vfx/iron-man.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Iron Man</h3><p>16:9 VFX video</p></div></div>
+        <div class="cyl-item v" data-video="videos/vfx/stranger-things.mp4"><div class="ci-media play"><video class="video-preview" src="videos/vfx/stranger-things.mp4" muted playsinline preload="metadata"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Stranger Things</h3><p>9:16 VFX video</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="sec-head reveal" style="margin-bottom:48px"><h2 class="sec-title">The <em>Pipeline</em></h2></div>
+    <div class="process reveal">
+      <div class="proc"><div class="n">01</div><h4>Direction</h4><p>Define the shot. Mood, lens, lighting, story before a single token is written.</p></div>
+      <div class="proc"><div class="n">02</div><h4>Prompt</h4><p>Engineer precise, layered prompts that the model reads like a shot list.</p></div>
+      <div class="proc"><div class="n">03</div><h4>Generate</h4><p>Iterate across models, selecting, seeding and steering for the exact frame.</p></div>
+      <div class="proc"><div class="n">04</div><h4>Composite</h4><p>VFX, edits and grade to deliver a finished, brand-ready cinematic asset.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="reveal">Let's make your brand<br>look <em>unreal.</em></h2>
+    <div class="contact-links reveal d1">
+      <a href="mailto:faiz@example.com" class="btn primary">Start a project <span class="ico">→</span></a>
+    </div>
+    <div class="social-links reveal d2">
+      <a href="https://www.instagram.com/salahcreates?igsh=MXNrMGhwcTc4enFxZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="glow-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.2 1 .47 1.4.87.4.4.67.8.87 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.2.6-.47 1-.87 1.4-.4.4-.8.67-1.4.87-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.2-1-.47-1.4-.87-.4-.4-.67-.8-.87-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.2-.6.47-1 .87-1.4.4-.4.8-.67 1.4-.87.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.07 3.5c.05 1.1.24 1.7.4 2.1.2.5.43.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.43-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.4a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.linkedin.com/in/faiz-sultan-167401371?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="glow-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.76V1.74C24 .78 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Faiz Sultan</div>
+    <div>AI Prompt Engineer and Visual Director</div>
+    <div><a href="mailto:faiz@example.com">faiz@example.com</a></div>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* LOADER */
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),1800)});
+
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* coral/charcoal gradient placeholders (one locked accent) */
+const grads={
+  g1:'radial-gradient(120% 120% at 30% 20%,#2a2d2f,#141416 70%),linear-gradient(135deg,rgba(255,106,85,.25),transparent)',
+  g2:'radial-gradient(120% 120% at 70% 30%,#34292b,#141416 65%),linear-gradient(180deg,rgba(255,106,85,.18),transparent)',
+  g3:'radial-gradient(120% 120% at 50% 80%,#232627,#0e0e10 70%),linear-gradient(45deg,rgba(255,106,85,.22),transparent)',
+  g4:'linear-gradient(135deg,#2a2d2f,#141416),radial-gradient(80% 80% at 80% 10%,rgba(255,106,85,.3),transparent)',
+  g5:'linear-gradient(160deg,#34292b,#141416),radial-gradient(70% 70% at 20% 90%,rgba(255,106,85,.25),transparent)',
+  g6:'radial-gradient(100% 100% at 50% 0%,rgba(255,106,85,.32),#141416 70%)'
+};
+document.querySelectorAll('.ci-media').forEach(m=>{
+  const item=m.closest('.cyl-item');const g=grads[item&&item.dataset.grad];
+  if(g && !m.classList.contains('play')) m.style.background=g;
+  if(g && m.classList.contains('play')) m.style.background=g;
+});
+
+/* scroll reveal for non-carousel sections */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== CYLINDRICAL CAROUSEL RENDER =====
+   Front item is sharp and large. As rotation advances (scroll down),
+   the front item tilts and blurs toward the LEFT, the RIGHT item rotates
+   into front and becomes main, and the previous left item passes to the
+   BACK. One full -360 turn returns to start, then the pin releases. */
+function renderCyl(cyl, rotation){
+  const items=cyl._items;const n=items.length;const spread=cyl._spread;
+  for(let i=0;i<n;i++){
+    const el=items[i];
+    const a=(i/n)*Math.PI*2 + rotation;   // this item's angle around the cylinder
+    const cos=Math.cos(a), sin=Math.sin(a);
+    const depth=(cos+1)/2;                 // 1 = front/near, 0 = back/far
+    const x=sin*spread;                    // horizontal position: +right, -left
+    const scale=0.5+depth*0.5;             // back 0.5 -> front 1.0
+    const blur=(1-depth)*12;               // front 0 -> back 12px, sides partial
+    const op=0.12+depth*0.88;              // back faint -> front solid
+    const ry=-sin*52;                      // tilt like a cylinder face, front flat
+    el.style.transform='translate(-50%,-50%) translateX('+x.toFixed(1)+'px) rotateY('+ry.toFixed(1)+'deg) scale('+scale.toFixed(3)+')';
+    el.style.filter='blur('+blur.toFixed(2)+'px)';
+    el.style.opacity=op.toFixed(3);
+    el.style.zIndex=Math.round(depth*100);
+    if(depth>0.92){
+      el.classList.add('is-front');
+    }else{
+      el.classList.remove('is-front');
+      // if this card was playing a video and is no longer at the front, stop it
+      if(el.classList.contains('is-playing')){
+        const f=el.querySelector('.ci-video');if(f) f.remove();
+        el.classList.remove('is-playing');
+      }
+    }
+  }
+}
+
+function initCarousels(){
+  const sections=document.querySelectorAll('[data-carousel]');
+  sections.forEach(section=>{
+    const cyl=section.querySelector('.cyl');
+    const stage=section.querySelector('.carousel-stage');
+    const bar=section.querySelector('.carousel-progress span');
+    const spreadFactor=parseFloat(section.dataset.spread||'0.32');
+    cyl._items=Array.from(cyl.querySelectorAll('.cyl-item'));
+    const setSpread=()=>{cyl._spread=Math.max(140, stage.clientWidth*spreadFactor);};
+    setSpread();
+    renderCyl(cyl,0);
+
+    const dist=Math.max(1000, Math.round(window.innerHeight*1.2));
+    ScrollTrigger.create({
+      trigger:section,
+      start:'top top',
+      end:'+='+dist,
+      pin:true,
+      pinSpacing:true,
+      scrub:1,
+      anticipatePin:1,
+      onRefresh:setSpread,
+      onUpdate:self=>{
+        const rot=-self.progress*Math.PI*2;   // negative: front exits to the left
+        renderCyl(cyl,rot);
+        if(bar) bar.style.transform='scaleX('+self.progress.toFixed(3)+')';
+      }
+    });
+  });
+  ScrollTrigger.refresh();
+}
+
+/* init carousels only if motion is allowed and GSAP loaded; else grid fallback */
+if(!reduceMotion && window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  window.addEventListener('load',initCarousels);
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>ScrollTrigger.refresh(),200);});
+}else{
+  document.body.classList.add('no-motion');
+}
+
+/* ===== LOCAL VIDEO CLICK-TO-PLAY =====
+   Add data-video="videos/file.mp4" to any card to play an uploaded video
+   directly on the portfolio. Optional: add data-poster="posters/file.jpg". */
+function stopAllVideos(except){
+  document.querySelectorAll('.cyl-item.is-playing').forEach(it=>{
+    if(it===except) return;
+    const f=it.querySelector('.ci-video');if(f) f.remove();
+    it.classList.remove('is-playing');
+  });
+}
+document.querySelectorAll('.video-preview').forEach(video=>{
+  video.addEventListener('loadedmetadata',()=>{
+    video.currentTime=Math.min(0.2, video.duration || 0.2);
+  },{once:true});
+});
+document.querySelectorAll('.cyl-item[data-video]').forEach(item=>{
+  item.addEventListener('click',()=>{
+    // in the 3D carousel only the front card is clickable; in grid mode all are
+    const inGrid=document.body.classList.contains('no-motion');
+    if(!inGrid && !item.classList.contains('is-front')) return;
+    if(item.classList.contains('is-playing')) return;
+    stopAllVideos(item);
+    const video=document.createElement('video');
+    video.className='ci-video';
+    video.src=item.dataset.video;
+    if(item.dataset.poster) video.poster=item.dataset.poster;
+    video.controls=true;
+    video.autoplay=true;
+    video.playsInline=true;
+    video.preload='metadata';
+    item.appendChild(video);
+    item.classList.add('is-playing');
+  });
+});
+
+/* ===== 3D ROBOT (reads scroll inside rAF, no scroll listener) ===== */
+const canvas=document.getElementById('robot-canvas');
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,.1,100);
+camera.position.set(0,0,8);
+scene.add(new THREE.AmbientLight(0xffffff,.35));
+const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(5,6,8);scene.add(key);
+const coralLight=new THREE.PointLight(0xff6a55,2.2,30);coralLight.position.set(-6,2,5);scene.add(coralLight);
+const rim=new THREE.PointLight(0x6688ff,1,30);rim.position.set(6,-3,-4);scene.add(rim);
+const bodyMat=new THREE.MeshStandardMaterial({color:0x232627,metalness:.85,roughness:.25});
+const darkMat=new THREE.MeshStandardMaterial({color:0x141416,metalness:.9,roughness:.3});
+const coralMat=new THREE.MeshStandardMaterial({color:0xff6a55,emissive:0xff6a55,emissiveIntensity:.9,metalness:.4,roughness:.3});
+const whiteMat=new THREE.MeshStandardMaterial({color:0xfcfcfd,metalness:.6,roughness:.2});
+const robot=new THREE.Group();const head=new THREE.Group();
+head.add(new THREE.Mesh(new THREE.BoxGeometry(2.4,2.2,2.2),bodyMat));
+const face=new THREE.Mesh(new THREE.BoxGeometry(2.0,1.7,.3),darkMat);face.position.set(0,0,1.12);head.add(face);
+const visor=new THREE.Mesh(new THREE.BoxGeometry(1.6,.5,.2),new THREE.MeshStandardMaterial({color:0x0a0a0c,metalness:.9,roughness:.1}));visor.position.set(0,.15,1.22);head.add(visor);
+const eyeGeo=new THREE.SphereGeometry(.16,24,24);
+const eyeL=new THREE.Mesh(eyeGeo,coralMat);eyeL.position.set(-.42,.15,1.34);head.add(eyeL);
+const eyeR=new THREE.Mesh(eyeGeo,coralMat);eyeR.position.set(.42,.15,1.34);head.add(eyeR);
+const antenna=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.9,12),whiteMat);antenna.position.set(0,1.45,0);head.add(antenna);
+const bulb=new THREE.Mesh(new THREE.SphereGeometry(.12,16,16),coralMat);bulb.position.set(0,1.95,0);head.add(bulb);
+[-1.3,1.3].forEach(x=>{
+  const ear=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,.25,24),darkMat);ear.rotation.z=Math.PI/2;ear.position.set(x,0,0);head.add(ear);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(.36,.04,12,24),coralMat);ring.rotation.y=Math.PI/2;ring.position.set(x*1.07,0,0);head.add(ring);
+});
+const jaw=new THREE.Mesh(new THREE.BoxGeometry(1.4,.3,.4),darkMat);jaw.position.set(0,-.85,1.0);head.add(jaw);
+robot.add(head);
+const neck=new THREE.Mesh(new THREE.CylinderGeometry(.5,.7,.8,24),bodyMat);neck.position.set(0,-1.7,0);robot.add(neck);
+robot.add(new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,.25,32),darkMat)).position.set(0,-2.1,0);
+const orbit=new THREE.Group();
+const ring1=new THREE.Mesh(new THREE.TorusGeometry(3.2,.015,12,80),new THREE.MeshStandardMaterial({color:0xff6a55,emissive:0xff6a55,emissiveIntensity:.5,transparent:true,opacity:.5}));ring1.rotation.x=Math.PI/2.2;orbit.add(ring1);
+const ring2=new THREE.Mesh(new THREE.TorusGeometry(3.8,.01,12,80),new THREE.MeshStandardMaterial({color:0x777e90,transparent:true,opacity:.35}));ring2.rotation.x=Math.PI/3;ring2.rotation.y=Math.PI/4;orbit.add(ring2);
+scene.add(orbit);
+const pGeo=new THREE.BufferGeometry();const pCount=120;const pos=new Float32Array(pCount*3);
+for(let i=0;i<pCount*3;i++)pos[i]=(Math.random()-.5)*18;
+pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xff6a55,size:.04,transparent:true,opacity:.6}));
+scene.add(particles);scene.add(robot);
+function placeRobot(){
+  if(window.innerWidth>900){robot.position.x=3.2;orbit.position.x=3.2;}
+  else{robot.position.x=0;orbit.position.x=0;robot.position.y=1.2;orbit.position.y=1.2;}
+}
+placeRobot();
+const target={x:0,y:0};
+window.addEventListener('mousemove',e=>{target.x=(e.clientX/window.innerWidth)*2-1;target.y=(e.clientY/window.innerHeight)*2-1;});
+window.addEventListener('touchmove',e=>{if(e.touches[0]){target.x=(e.touches[0].clientX/window.innerWidth)*2-1;target.y=(e.touches[0].clientY/window.innerHeight)*2-1;}},{passive:true});
+let prevScroll=window.scrollY,scrollLook=0,t=0;
+function animate(){
+  requestAnimationFrame(animate);
+  t+=.01;
+  const sY=window.scrollY;
+  const maxScroll=Math.max(1,document.body.scrollHeight-window.innerHeight);
+  const scrollProgress=sY/maxScroll;
+  const delta=sY-prevScroll;prevScroll=sY;
+  scrollLook=scrollLook*0.9+Math.max(-1,Math.min(1,delta*0.05))*0.1;
+  const lookX=target.x*0.8;
+  const lookY=(target.y*0.5)+(scrollLook*0.9);   // positive rotation.x = look down
+  head.rotation.y+=(lookX-head.rotation.y)*0.07;
+  head.rotation.x+=(lookY-head.rotation.x)*0.07;
+  head.rotation.z+=((-target.x*0.05)-head.rotation.z)*0.05;
+  const baseY=window.innerWidth>900?0:1.2;
+  robot.position.y=baseY-scrollProgress*4.5+Math.sin(t)*0.12;
+  robot.rotation.y=scrollProgress*Math.PI*2;
+  robot.position.z=-scrollProgress*2;
+  orbit.position.y=robot.position.y;orbit.position.z=robot.position.z;
+  coralMat.emissiveIntensity=0.6+Math.abs(Math.sin(t*2))*0.6;
+  orbit.rotation.z+=0.004;orbit.rotation.y+=0.002;ring1.rotation.z+=0.01;
+  coralLight.position.x=Math.sin(t*0.5)*6;coralLight.position.y=Math.cos(t*0.4)*3;
+  particles.rotation.y+=0.0008;particles.position.y=Math.sin(t*0.3)*0.5;
+  camera.position.x+=(target.x*0.4-camera.position.x)*0.04;
+  const camTargetY=-target.y*0.3+robot.position.y*0.55;
+  camera.position.y+=(camTargetY-camera.position.y)*0.05;
+  camera.lookAt(robot.position.x*0.5,robot.position.y*0.7,0);
+  renderer.render(scene,camera);
+}
+animate();
+window.addEventListener('resize',()=>{
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  placeRobot();
+});
+</script>
+</body>
+</html>
