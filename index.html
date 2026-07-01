@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faiz Sultan, AI Prompt Engineer and Visual Director</title>
+<meta name="description" content="Faiz Sultan crafts AI-powered product ads, 3D visuals, semi-realistic animation, UGC content, motion graphics and brand edits. Three years engineering prompts for cinematic AI content." />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,800&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="grain"></div>
+
+<div id="loader"><div class="load-name">Faiz Sultan</div><div class="load-bar"><span></span></div></div>
+
+<canvas id="robot-canvas"></canvas>
+
+<nav>
+  <div class="logo">Faiz Sultan</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#static">Static</a>
+    <a href="#ugc">UGC</a>
+    <a href="#ads3d">3D Ads</a>
+    <a href="#animation">Animation</a>
+    <a href="#motion">Motion</a>
+    <a href="#vfx">VFX</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex'">Menu</button>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>
+      <span class="ln"><i>I direct</i></span>
+      <span class="ln"><i>machines to</i></span>
+      <span class="ln"><i><em>see</em> beauty.</i></span>
+    </h1>
+    <p class="hero-sub">Three years engineering prompts that turn raw AI into <b>cinematic product ads, 3D visuals, semi-realistic animation and brand edits</b>. I art-direct intelligence.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn primary">Start a project <span class="ico">→</span></a>
+      <a href="#static" class="btn ghost">See the work <span class="ico">↓</span></a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div>
+        <p class="about-lead reveal">I'm Faiz Sultan, a prompt engineer who treats every generation like a film set. Lighting, lens, composition, story. The model is my camera. The prompt is my <em>direction</em>.</p>
+        <div class="skill-row reveal d1">
+          <span class="chip">AI Product Photography</span>
+          <span class="chip">3D Product Ads</span>
+          <span class="chip">Semi-Realistic Animation</span>
+          <span class="chip">UGC Avatars</span>
+          <span class="chip">AI VFX</span>
+          <span class="chip">Motion Graphics</span>
+          <span class="chip">Brand Edits</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal d1"><div class="n">3<em>+</em></div><div class="l">Years in AI content</div></div>
+        <div class="stat reveal d2"><div class="n">200<em>+</em></div><div class="l">Ads and shoots delivered</div></div>
+        <div class="stat reveal d3"><div class="n">12<em>×</em></div><div class="l">Avg. faster than a studio shoot</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- single marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Product Ads</span><span>UGC Content</span><span>3D Renders</span><span>AI Animation</span><span>AI VFX</span><span>Brand Edits</span>
+      <span>Product Ads</span><span>UGC Content</span><span>3D Renders</span><span>AI Animation</span><span>AI VFX</span><span>Brand Edits</span>
+    </div>
+  </div>
+
+  <!-- CAROUSEL: AI Product Photography -->
+  <section class="carousel-section" id="static" data-carousel data-spread="0.32">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>Static</em> and Product Shoots</h2>
+        <p class="sec-desc">Studio-grade product photography, art-directed end to end. Scroll to spin the showcase.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-grad="g1"><img class="ci-media" src="images/statics/fragrance-glass.jpeg" alt="Fragrance, glass" loading="lazy"><div class="ci-cap"><h3>Fragrance, glass</h3><p>Macro reflections, soft key light</p></div></div>
+        <div class="cyl-item h" data-grad="g2"><img class="ci-media" src="images/statics/skincare-studio.jpeg" alt="Skincare, studio" loading="lazy"><div class="ci-cap"><h3>Skincare, studio</h3><p>Gradient sweep, dewy highlights</p></div></div>
+        <div class="cyl-item h" data-grad="g3"><img class="ci-media" src="images/statics/gadget-hero-shot.jpeg" alt="Gadget, hero shot" loading="lazy"><div class="ci-cap"><h3>Gadget, hero shot</h3><p>Rim light, matte black set</p></div></div>
+        <div class="cyl-item h" data-grad="g4"><img class="ci-media" src="images/statics/beverage-splash.jpeg" alt="Beverage splash" loading="lazy"><div class="ci-cap"><h3>Beverage splash</h3><p>Frozen motion, condensation</p></div></div>
+        <div class="cyl-item h" data-grad="g5"><img class="ci-media" src="images/statics/watch-macro.jpeg" alt="Watch, macro" loading="lazy"><div class="ci-cap"><h3>Watch, macro</h3><p>Brushed metal, spec highlights</p></div></div>
+        <div class="cyl-item h" data-grad="g6"><img class="ci-media" src="images/statics/footwear-set.jpeg" alt="Footwear, set" loading="lazy"><div class="ci-cap"><h3>Footwear, set</h3><p>Editorial colour blocking</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI UGC -->
+  <section class="carousel-section" id="ugc" data-carousel data-spread="0.26">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>UGC</em> and Avatars</h2>
+        <p class="sec-desc">Authentic, scroll-stopping creator content. AI avatars that talk, react and sell.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <!-- Local video card template:
+        <div class="cyl-item v" data-video="my-video.mp4" data-poster="posters/my-video.jpg">
+          <div class="ci-media play">
+            <img class="video-poster" src="posters/my-video.jpg" alt="Project title" loading="lazy">
+            <div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="ci-cap"><h3>Project title</h3><p>Project category</p></div>
+        </div>
+        -->
+        <div class="cyl-item v" data-video="ugc/ai-vidfeo.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/ai-vidfeo.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>AI Vidfeo</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="ugc/daraz-ad.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/daraz-ad.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Daraz Ad</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="ugc/pay-day-sale.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/pay-day-sale.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Pay Day Sale</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="ugc/steez-skin-video.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/steez-skin-video.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Steez Skin Video</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="ugc/sunbae-growth.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/sunbae-growth.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>SUNBAE Growth</h3><p>AI creator short</p></div></div>
+        <div class="cyl-item v" data-video="ugc/ugc.mp4"><div class="ci-media play"><video class="video-preview" data-src="ugc/ugc.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>UGC</h3><p>AI creator short</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI 3D Ads -->
+  <section class="carousel-section" id="ads3d" data-carousel data-spread="0.26">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>3D</em> Product Ads</h2>
+        <p class="sec-desc">Full motion campaigns. Products that float, morph and reveal in 3D space.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item v" data-video="3d-ads/slim-fast-hunger-control.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/slim-fast-hunger-control.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slim Fast Hunger Control</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="3d-ads/hunger-control-cycle.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/hunger-control-cycle.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Hunger Control Cycle</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="3d-ads/pdrn-peptide-serum.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/pdrn-peptide-serum.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>PDRN Peptide Serum</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="3d-ads/slimming-shots.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/slimming-shots.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slimming Shots</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="3d-ads/pdrn-salmon-dna.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/pdrn-salmon-dna.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>PDRN Salmon DNA</h3><p>3D product ad</p></div></div>
+        <div class="cyl-item v" data-video="3d-ads/slim-fast-bundle.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-ads/slim-fast-bundle.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Slim Fast Bundle</h3><p>3D product ad</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: 3D Semi-Realistic AI Animation (NEW) -->
+  <section class="carousel-section" id="animation" data-carousel data-spread="0.36">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">3D Semi-Realistic <em>Animation</em></h2>
+        <p class="sec-desc">Characters and worlds built with AI. Stylised yet believable motion, lit like film.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="3d-animation/class-scene.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/class-scene.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Class Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="3d-animation/fight-scene.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/fight-scene.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Fight Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="3d-animation/football.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/football.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Football</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="3d-animation/politician-scene.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/politician-scene.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Politician Scene</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="3d-animation/vlogger-2.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/vlogger-2.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Vlogger 2</h3><p>3D semi-realistic animation</p></div></div>
+        <div class="cyl-item h" data-video="3d-animation/vlogger.mp4"><div class="ci-media play"><video class="video-preview" data-src="3d-animation/vlogger.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Vlogger</h3><p>3D semi-realistic animation</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: AI Motion Graphics -->
+  <section class="carousel-section" id="motion" data-carousel data-spread="0.32">
+    <div class="carousel-inner">
+      <div class="sec-head">
+        <h2 class="sec-title">AI <em>Motion Graphics</em></h2>
+        <p class="sec-desc">Kinetic identity, animated logos and type. Designed and rendered with AI for brand and social.</p>
+      </div>
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="motion-graphics/motion-graphic-reel-1.mp4"><div class="ci-media play"><video class="video-preview" data-src="motion-graphics/motion-graphic-reel-1.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Motion Graphic Reel 1</h3><p>16:9 motion graphic</p></div></div>
+        <div class="cyl-item v" data-video="motion-graphics/motion-graphic-reel-2.mp4"><div class="ci-media play"><video class="video-preview" data-src="motion-graphics/motion-graphic-reel-2.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Motion Graphic Reel 2</h3><p>9:16 motion graphic</p></div></div>
+        <div class="cyl-item h" data-video="motion-graphics/studio-labs-final-saas.mp4"><div class="ci-media play"><video class="video-preview" data-src="motion-graphics/studio-labs-final-saas.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Studio Labs Final SaaS</h3><p>16:9 SaaS video</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- AI VFX: one section header + two carousels (horizontal + vertical) -->
+  <div class="videos-head" id="vfx">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">AI <em>VFX</em></h2>
+      <p class="sec-desc">Cinematic visual effects, composited and graded. Scroll to spin the showcase.</p>
+    </div>
+  </div>
+
+  <!-- VFX carousel -->
+  <section class="carousel-section" data-carousel data-spread="0.36">
+    <div class="carousel-inner">
+      <div class="carousel-stage"><div class="cyl">
+        <div class="cyl-item h" data-video="vfx/iron-man.mp4"><div class="ci-media play"><video class="video-preview" data-src="vfx/iron-man.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Iron Man</h3><p>16:9 VFX video</p></div></div>
+        <div class="cyl-item v" data-video="vfx/stranger-things.mp4"><div class="ci-media play"><video class="video-preview" data-src="vfx/stranger-things.mp4" muted playsinline preload="none"></video><div class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="ci-cap"><h3>Stranger Things</h3><p>9:16 VFX video</p></div></div>
+      </div></div>
+      <div class="carousel-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="sec-head reveal" style="margin-bottom:48px"><h2 class="sec-title">The <em>Pipeline</em></h2></div>
+    <div class="process reveal">
+      <div class="proc"><div class="n">01</div><h4>Direction</h4><p>Define the shot. Mood, lens, lighting, story before a single token is written.</p></div>
+      <div class="proc"><div class="n">02</div><h4>Prompt</h4><p>Engineer precise, layered prompts that the model reads like a shot list.</p></div>
+      <div class="proc"><div class="n">03</div><h4>Generate</h4><p>Iterate across models, selecting, seeding and steering for the exact frame.</p></div>
+      <div class="proc"><div class="n">04</div><h4>Composite</h4><p>VFX, edits and grade to deliver a finished, brand-ready cinematic asset.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="reveal">Let's make your brand<br>look <em>unreal.</em></h2>
+    <div class="contact-links reveal d1">
+      <a href="mailto:faiz@example.com" class="btn primary">Start a project <span class="ico">→</span></a>
+    </div>
+    <div class="social-links reveal d2">
+      <a href="https://www.instagram.com/salahcreates?igsh=MXNrMGhwcTc4enFxZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="glow-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.2 1 .47 1.4.87.4.4.67.8.87 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.2.6-.47 1-.87 1.4-.4.4-.8.67-1.4.87-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.2-1-.47-1.4-.87-.4-.4-.67-.8-.87-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.2-.6.47-1 .87-1.4.4-.4.8-.67 1.4-.87.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.07 3.5c.05 1.1.24 1.7.4 2.1.2.5.43.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.43-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.4a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.linkedin.com/in/faiz-sultan-167401371?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="glow-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.76V1.74C24 .78 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Faiz Sultan</div>
+    <div>AI Prompt Engineer and Visual Director</div>
+    <div><a href="mailto:faiz@example.com">faiz@example.com</a></div>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
